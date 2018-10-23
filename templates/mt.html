@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .user_info{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function doSomething() {
+        //TODO
+    }
+</script>
+<form action="" method="post">
+    <table>
+        <tr>
+            <td class="user_info"> 名字：</td>
+            <td colspan="4">
+                <input type="text" required>
+            </td>
+        </tr>
+        <tr>
+            <td class="user_info">您的爱好：</td>
+            <td>
+                <input type="checkbox" id="Vue" value="Vue" name="Vue">
+                <label for="Vue">Vue</label>
+            </td>
+            <td>
+                <input type="checkbox" id="PHP" value="PHP" name="PHP">
+                <label for="PHP">PHP</label>
+            </td>
+            <td>
+                <input type="checkbox" id="Docker" value="Docker" name="Docker">
+                <label for="Docker">Docker</label>
+
+            </td>
+            <td>
+                <input type="checkbox" id="Jenkins" value="Jenkins" name="Jenkins">
+                <label for="Jenkins">Jenkins</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+            <button type="submit" onclick="doSomething()">提交</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

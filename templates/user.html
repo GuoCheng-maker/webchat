@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <title>Jesi微信</title>
+    <link rel="icon" sizes="128x128" href="//res.wx.qq.com/a/wx_fed/webwx/res/static/img/2kAS7mD.png" type="image/png" />
+    <link rel="stylesheet" href="//res.wx.qq.com/a/wx_fed/webwx/res/static/css/b57ceb1fe70efc47d4f0cab10d89d36f.css"/>
+    <style>
+       body {
+           background:url(/static/大圣归来.jpg);
+       }
+    </style>
+</head>
+<body>
+    <div style="text-align: center"><h1>最近联系人:</h1></div>
+    <div style="text-align: center">
+        <ul>
+            {% for item in user_init_dict.ContactList %}
+                <li>{{ item.NickName }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/contact-list.html">查看更多联系</a>
+    </div>
+    <div style="text-align: center"><h1>公众号信息:</h1></div>
+        {% for item in user_init_dict.MPSubscribeMsgList %}
+        <h3 style="text-align: center">{{ item.NickName }}</h3>
+            {% for msg in item.MPArticleList %}
+                <div style="text-align: center"><a href="{{ msg.Url }}">{{ msg.Title }}</a></div>
+            {% endfor %}
+        {% endfor %}
+
+<div class="foot-nav" style="text-align: center">
+    <div style="display:none" id="y-destjid"></div>
+    <div style="display:none" id="y-destnick"></div>
+        <a href="#" target="_blank">Jesi</a>
+        <span>|</span>
+        <a href="#" target="_blank">联系我</a>
+        <span>|</span>
+        <a href="#" target="_blank">服务条款</a>
+        <span>|</span>
+        <a href="#" target="_blank">隐私政策</a>
+        <span>|</span>
+        <a href="#" target="_blank">Jesi测试使用</a>
+        <span>|</span>
+        <a href="#" target="_blank">意见与反馈</a>
+        <span>|</span>
+        <a href="#" target="_blank">友情链接</a>
+        <span>|</span>
+        <a href="#" target="_blank">公告</a>
+</div>
+</body>
+</html>

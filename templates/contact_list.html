@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jesi微信</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap-theme.css" rel="stylesheet">
+    <link rel="icon" sizes="128x128" href="//res.wx.qq.com/a/wx_fed/webwx/res/static/img/2kAS7mD.png" type="image/png" />
+    <link rel="stylesheet" href="//res.wx.qq.com/a/wx_fed/webwx/res/static/css/b57ceb1fe70efc47d4f0cab10d89d36f.css"/>
+    <style>
+       body {
+           background:url(/static/timg1.jpg);
+           background-size:1500px 20000px;
+       }
+    </style>
+</head>
+<body>
+<div>
+    <div style="text-align: center"><h1>好友:</h1></div>
+    <div style="text-align: center;">
+        <p><input class="form-control" id="toUser" type="text" placeholder="接消息用户" /></p>
+        <p><textarea class="form-control" id="msg" placeholder="请输入消息"></textarea></p>
+        <p><input id="btn" type="button" value="发送" /></p>
+    </div>
+        <ul style="text-align: center;font-size: 20px;color: black">
+            {% for item in contact_list_dict.MemberList %}
+                <li style="font-weight: bold" username="{{item.UserName}}">{{ item.NickName }}</li>
+                <a href="#" style="color: #dddddd">{{ item.RemarkName }}</a>
+                <hr>
+            {% endfor %}
+        </ul>
+
+</div>
+<script src="/static/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        bindSendMsg();
+        bindLi();
+        getMsg();
+    });
+    function bindSendMsg() {
+        $("#btn").click(function () {
+            $.ajax({
+                url:"/send-msg.html",
+                Type:"GET",
+                DataType:"JSON",
+                data:{"toUser":$("#toUser").val(),"msg":$("#msg").val()},
+                success:function (arg) {
+                }
+            })
+        })
+    }
+
+    function bindLi() {
+        $("li").dblclick(function () {
+            var v = $(this).attr("username");
+            $("#toUser").val(v);
+        })
+    }
+    
+    function getMsg() {
+        $.ajax({
+            url:"/get-msg.html",
+            Type:"GET",
+            success:function (arg) {
+                getMsg()
+            }
+        })
+    }
+    
+</script>
+</body>
+</html>

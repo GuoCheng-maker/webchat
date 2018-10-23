@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jesi微信</title>
+    <link rel="icon" sizes="128x128" href="//res.wx.qq.com/a/wx_fed/webwx/res/static/img/2kAS7mD.png" type="image/png" />
+    <link rel="stylesheet" href="//res.wx.qq.com/a/wx_fed/webwx/res/static/css/b57ceb1fe70efc47d4f0cab10d89d36f.css"/></head>
+<body>
+    <div>
+        <i class="web_wechat_login_logo"></i>
+    </div>
+    <div style="text-align: center">
+        <div>
+            <h2>Jesi测试使用Web微信</h2>
+            <a><h2>联系电话：17835411495</h2></a>
+        </div>
+        <div>
+            <img id="qrcode" src="https://login.weixin.qq.com/qrcode/{{ qcode }}">
+        </div >
+    </div>
+
+    <div class="foot-nav" style="text-align: center">
+    <div style="display:none" id="y-destjid"></div>
+    <div style="display:none" id="y-destnick"></div>
+        <a href="#" target="_blank">Jesi</a>
+        <span>|</span>
+        <a href="#" target="_blank">联系我</a>
+        <span>|</span>
+        <a href="#" target="_blank">服务条款</a>
+        <span>|</span>
+        <a href="#" target="_blank">隐私政策</a>
+        <span>|</span>
+        <a href="#" target="_blank">Jesi测试使用</a>
+        <span>|</span>
+        <a href="/feedback" target="_blank">意见与反馈</a>
+        <span>|</span>
+        <a href="#" target="_blank">友情链接</a>
+        <span>|</span>
+        <a href="#" target="_blank">公告</a>
+</div>
+
+<script src="/static/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        checkLogin();
+    });
+    //做一个递归，来监听用户是否扫码
+    function checkLogin() {
+        $.ajax({
+            url:"/check-login.html",
+            type:"GET",
+            dataType:'JSON',
+            success:function (arg) {
+                if (arg.code == 408) {
+                    checkLogin()
+                } else if (arg.code == 201) {
+                    $('#qrcode').attr('src', arg.data);
+                    checkLogin();
+                }else if (arg.code==200){
+                    location.href='/user.html'
+
+                }
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>
